@@ -1,0 +1,29 @@
+﻿@model MovieStore.ViewModels.MovieViewModel
+@{
+    ViewBag.Title = "Movies";
+    ViewBag.Message = "List of movie title";
+}
+
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+@if (Model.Movies.Count == 0)
+{
+    <text>There is no movies on the list </text>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+
+        <tr>
+            <th>Title</th>
+        </tr>
+        @foreach(var movie in Model.Movies)
+        {
+            <tr>
+                <th>@movie.Title</th>
+            </tr>
+        }
+
+    </table>
+}

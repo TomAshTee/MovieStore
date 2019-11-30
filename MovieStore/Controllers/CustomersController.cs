@@ -14,7 +14,8 @@ namespace MovieStore.Controllers
         {
             new Customer {Name = "Thomas", Id = "1"},
             new Customer {Name = "Alex", Id = "2"},
-            new Customer {Name = "Jane", Id = "3"}
+            new Customer {Name = "Jane", Id = "3"},
+            new Customer {Name = "John", Id = "4"}
         };
 
         // GET: Customers
@@ -29,6 +30,8 @@ namespace MovieStore.Controllers
         public ActionResult Details(string id)
         {
             var customer = customersList.Find(x => x.Id == id);
+            if (customer == null)
+                return HttpNotFound();
 
             return View(customer);
         }
