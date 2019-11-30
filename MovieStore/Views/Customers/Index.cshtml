@@ -1,0 +1,30 @@
+﻿@model MovieStore.ViewModels.CustomerViewModel
+@{
+    ViewBag.Title = "Customers";
+    ViewBag.Message = "Name and ID list.";
+}
+
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+
+@if (Model.Customers.Count == 0)
+{
+    <text>There is no customers on list</text>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+        </tr>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                <td>@customer.Id</td>
+            </tr>
+        }
+    </table>
+}
